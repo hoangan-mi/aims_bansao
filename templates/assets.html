@@ -154,10 +154,11 @@ a.detail:hover{
 <td>{{ asset["Room"] }}</td>
 <td>{{ asset["Type_asset"] }}</td>
 <td>{{ asset["Ordinal_number"] }}</td>
-<td>{{ asset["Description"] }}</td>
+<td>{{ asset.get["Description"] }}</td>
 <td>{{ asset["Year"] }}</td>
 <td>{{ asset["Origin"] }}</td>
 <td>{{ asset["Status"] }}</td>
+{% set ats = asset.get('ATS', 100) | int %}
 <td>
     {% if asset['ATS_value'] >= 80 %}
         <span style="color:green">🟢 {{ asset['ATS_display'] }}</span>
