@@ -1,0 +1,2 @@
+user,asset_id,expected_room,scanned_room,type_alert,description,time
+admin,A2-01-0101-TB-01,101,202,wrong_room,Scan sai phòng,2026-03-31 23:16:06

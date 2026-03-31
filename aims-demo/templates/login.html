@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<title>AIMS Login</title>
+
+<style>
+
+body{
+    margin:0;
+    font-family: "Segoe UI", sans-serif;
+    background: linear-gradient(135deg,#0f2027,#203a43,#2c5364);
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+/* box login */
+
+.login-box{
+    background:white;
+    width:360px;
+    padding:40px;
+    border-radius:12px;
+    box-shadow:0 10px 35px rgba(0,0,0,0.3);
+    text-align:center;
+}
+
+/* tiêu đề */
+
+h2{
+    margin-bottom:25px;
+    color:#2c3e50;
+}
+
+/* input */
+
+input{
+    width:100%;
+    padding:12px;
+    margin:10px 0;
+    border-radius:6px;
+    border:1px solid #ccc;
+    font-size:14px;
+    transition:0.3s;
+}
+
+input:focus{
+    border-color:#2d6cdf;
+    outline:none;
+    box-shadow:0 0 5px rgba(45,108,223,0.5);
+}
+
+/* button */
+
+button{
+    width:100%;
+    padding:12px;
+    margin-top:15px;
+    border:none;
+    border-radius:6px;
+    background:linear-gradient(90deg,#2d6cdf,#4facfe);
+    color:white;
+    font-size:15px;
+    font-weight:bold;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+button:hover{
+    transform:translateY(-2px);
+    box-shadow:0 5px 15px rgba(0,0,0,0.3);
+}
+
+/* logo text */
+
+.logo{
+    font-size:22px;
+    font-weight:bold;
+    margin-bottom:10px;
+    color:#2d6cdf;
+}
+
+.subtitle{
+    font-size:13px;
+    color:#777;
+    margin-bottom:25px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="login-box">
+
+<div class="logo">AIMS</div>
+<div class="subtitle">Asset Management System</div>
+
+<h2>Đăng nhập hệ thống</h2>
+
+<form method="POST">
+
+<input name="username" placeholder="Username" required>
+
+<input type="password" name="password" placeholder="Password" required>
+
+<button type="submit">Login</button>
+
+</form>
+
+</div>
+
+</body>
+</html>
