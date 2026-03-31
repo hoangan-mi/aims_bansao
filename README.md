@@ -1,1 +1,1 @@
-# aims_bansao
+📦 AIMS – Asset Information Management System
