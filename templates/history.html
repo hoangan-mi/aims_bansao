@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<title>Lịch sử kiểm kê</title>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+
+body{
+    margin:0;
+    font-family:"Segoe UI",Arial;
+    background:#f1f5f9;
+}
+
+/* SIDEBAR */
+
+.sidebar{
+    width:250px;
+    height:100vh;
+    background:linear-gradient(180deg,#0f172a,#1e293b);
+    color:white;
+    position:fixed;
+    left:0;
+    top:0;
+    padding-top:30px;
+}
+
+.sidebar h2{
+    text-align:center;
+    margin-bottom:40px;
+}
+
+.sidebar a{
+    display:block;
+    padding:15px 25px;
+    color:#cbd5e1;
+    text-decoration:none;
+}
+
+.sidebar a:hover{
+    background:#334155;
+    color:white;
+}
+
+/* CONTENT */
+
+.content{
+    margin-left:250px;
+    padding:40px;
+}
+
+.card{
+    background:white;
+    padding:30px;
+    border-radius:15px;
+    box-shadow:0 8px 25px rgba(0,0,0,0.08);
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+}
+
+th,td{
+    padding:12px;
+    border-bottom:1px solid #e2e8f0;
+    text-align:left;
+}
+
+th{
+    background:#f8fafc;
+}
+
+tr:hover{
+    background:#f1f5ff;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<!-- SIDEBAR -->
+
+<div class="sidebar">
+
+<h2>📊 AIMS</h2>
+
+<a href="/">🏠 Trang chủ</a>
+<a href="/assets">📋 Danh sách tài sản</a>
+<a href="/scan">📷 Quét QR</a>
+<a href="/history">🕘 Lịch sử quét</a>
+<a href="/abnormal">⚠️ Tài sản bất thường</a>
+<a href="/logout">🚪 Đăng xuất</a>
+
+</div>
+
+
+<!-- CONTENT -->
+
+<div class="content">
+
+<div class="card">
+
+<h2>🕘 Lịch sử kiểm kê tài sản</h2>
+
+<br>
+
+<table>
+
+<thead>
+<tr>
+<th>STT</th>
+<th>ID tài sản</th>
+<th>Phòng</th>
+<th>Loại</th>
+<th>Thời gian</th>
+<th>Người quét</th>
+</tr>
+</thead>
+
+<tbody>
+
+{% if history %}
+
+{% for h in history %}
+
+<tr>
+
+<td>{{ loop.index }}</td>
+<td>{{ h.asset_id }}</td>
+<td>{{ h.room }}</td>
+<td>{{ h.type }}</td>
+<td>{{ h.time }}</td>
+<td>{{ h.user }}</td>
+
+</tr>
+
+{% endfor %}
+
+{% else %}
+
+<tr>
+<td colspan="4" style="text-align:center;color:gray;">
+Chưa có dữ liệu quét
+</td>
+</tr>
+
+{% endif %}
+
+</tbody>
+
+</table>
+
+</div>
+
+</div>
+
+</body>
+</html>
