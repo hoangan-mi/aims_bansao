@@ -90,12 +90,10 @@ opacity:.7
 
 {% if asset %}
 
-{% set ats = asset.get("ATS",100)|int %}
-
 <div class="container">
 <div class="card">
 
-<!-- 🔥 ERROR -->
+<!-- ERROR -->
 {% if error %}
 <div style="background:#fef2f2;color:#b91c1c;padding:12px;border-radius:10px;margin-bottom:20px;font-weight:600;">
 {{ error }}
@@ -145,69 +143,29 @@ opacity:.7
 <span class="value">{{ asset["Notes"] or "—" }}</span>
 </div>
 
+<!-- ✅ ATS FIX -->
 <div class="info-row">
 <span class="label">ATS</span>
-<span class="value">
-{{ ats }}
+<span class="value"
+style="
+{% if asset['ATS_value'] < 30 %}color:#dc2626;
+{% elif asset['ATS_value'] < 70 %}color:#f59e0b;
+{% else %}color:#16a34a;
+{% endif %}
+font-weight:700;
+">
+{{ asset["ATS_display"] }}
 </span>
 </div>
 
 <hr>
 
-<!-- 🔥 ADMIN / MANAGER -->
-{% if session.role in ["admin","manager"] %}
-
-<div style="margin-top:15px; padding:15px; border:1px solid #e2e8f0; border-radius:12px;">
-
-<h4>🔧 Chế độ kiểm kê</h4>
-
-{% if session.current_room %}
-<p style="color:#16a34a;font-weight:600;">
-📍 Đang quét phòng: {{ session.current_room }}
-</p>
-{% else %}
-<p style="color:#dc2626;font-weight:600;">
-⚠️ Chưa quét phòng
-</p>
-{% endif %}
-
-<input type="text" id="roomInput" placeholder="Nhập mã phòng (VD: P101)"
-style="width:100%;padding:10px;border-radius:8px;border:1px solid #ccc;margin-top:10px;">
-
-<button onclick="scanRoom()"
-style="margin-top:10px;width:100%;padding:10px;border:none;border-radius:8px;background:#2563eb;color:white;font-weight:600;">
-📷 Quét phòng
-</button>
-
-<a href="/end-scan-room">
-<button style="margin-top:10px;width:100%;padding:10px;border:none;border-radius:8px;background:#dc2626;color:white;font-weight:600;">
-⛔ Kết thúc quét
-</button>
-</a>
-
-</div>
-
-<script>
-function scanRoom(){
-    let room = document.getElementById("roomInput").value;
-    if(room){
-        window.location.href = "/scan-room/" + room;
-    } else {
-        alert("Nhập mã phòng!");
-    }
-}
-</script>
-
-{% endif %}
-
-<!-- 🔥 BÁO HỎNG -->
+<!-- BÁO HỎNG -->
 <form action="/report/{{ asset['ID_assets'] }}" method="get" style="margin-top:20px;">
-
 <button type="submit"
 style="width:100%;padding:12px;border:none;border-radius:10px;background:#ef4444;color:white;font-weight:600;">
 🚨 Báo cáo hư hỏng
 </button>
-
 </form>
 
 <a href="/" class="back-link">← Quay lại</a>
