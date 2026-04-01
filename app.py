@@ -350,6 +350,7 @@ def abnormal():
 def delete_abnormal():
 
     asset_id = request.form.get("asset_id")
+    time_val = request.form.get("time")
 
     if not os.path.exists("alerts.csv"):
         return redirect("/abnormal")
@@ -358,8 +359,10 @@ def delete_abnormal():
 
     with open("alerts.csv", newline="", encoding="utf-8") as f:
         reader = csv.DictReader(f)
+
         for row in reader:
-            if row["asset_id"] != asset_id:
+            # ❌ chỉ xóa đúng 1 dòng
+            if not (row["asset_id"] == asset_id and row["time"] == time_val):
                 rows.append(row)
 
     with open("alerts.csv", "w", newline="", encoding="utf-8") as f:
@@ -373,7 +376,6 @@ def delete_abnormal():
         writer.writerows(rows)
 
     return redirect("/abnormal")
-
 
 # =========================
 # RUN
